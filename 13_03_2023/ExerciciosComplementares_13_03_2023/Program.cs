@@ -26,3 +26,19 @@ lstCarro.Add(carro);
 
 lstPessoa.ForEach(pessoa => Console.WriteLine(pessoa));
 lstCarro.ForEach(carro => Console.WriteLine(carro));
+
+
+
+Console.WriteLine("#########################################")
+	Console.WriteLine("Ex Lista Supermercado");
+
+List<Itens> lstcompras = new List<Itens>();
+/*
+Console.Write("Adicione um item a lista: ");
+item = string.Parse(Console.ReadLine());
+lstcompras.Item(item);
+*/
+
+lstcompras.Item("Cebola");
+
+lscompras.ForEach(lstcompras = > Console.WriteLine(lstcompras));
