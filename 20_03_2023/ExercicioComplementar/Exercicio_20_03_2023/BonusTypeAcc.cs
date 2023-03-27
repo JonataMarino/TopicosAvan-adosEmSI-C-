@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace Exercicio_20_03_2023
 {
-	public class Client : Person
-	{	
-		public int IdClient { get; set; }
-
-		public FollowUp FollowUp { get; set; }
+	public class BonusTypeAcc
+	{
+		public int id { get; set; }
+		public string descricao { get; set; }
 
 		public override string ToString()
 		{
-			return "Tipo de Conta: " + this.FollowUp.Description + base.ToString();
+			return "\nID do bonus: " + id +
+				"\nDescrição do bonûs: " + descricao;
 		}
+
 	}
 }

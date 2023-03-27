@@ -8,7 +8,7 @@ namespace Exercicio_20_03_2023
 {
 	public class FollowUp
 	{
-		public int Id { get; set; }
+		public int IdFollowUp { get; set; }
 		public string Description { get; set; }
 
 	}

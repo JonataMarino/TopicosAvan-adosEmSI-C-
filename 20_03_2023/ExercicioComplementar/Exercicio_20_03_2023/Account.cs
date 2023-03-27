@@ -10,9 +10,16 @@ namespace Exercicio_20_03_2023
 	{
 		public int Id {  get; set; }
 		public string Descricao { get; set; }
-		public decimal saldo { get; set; }
 		public TypeCoin TypeCoin { get; set; }
-		public decimal balance { get; set; }
+		public TypeAcc TypeAcc { get; set; }
 
+		public override string ToString()
+		{
+			return "\nID da conta: " + Id +
+				"\nDescrição da conta: " + Descricao +
+				"\nTipo de Moeda: " + TypeCoin +
+				"\nTipo de Conta: " + TypeAcc
+				;
+		}
 	}
 }

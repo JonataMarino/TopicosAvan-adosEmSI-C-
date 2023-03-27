@@ -10,5 +10,11 @@ namespace Exercicio_20_03_2023
 	{
 		public int Id { get; set; }
 		public string coin { get; set; }
+
+		public override string ToString()
+		{
+			return "\nID da moeda: " + Id +
+				"\nNome da moeda: " + coin ;
+		}
 	}
 }

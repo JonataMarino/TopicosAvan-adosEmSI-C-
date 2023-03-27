@@ -8,6 +8,7 @@ namespace Exercicio_20_03_2023
 {
 	public class CP : Account
 	{
+		public decimal saldo { get; set; }
 		public int TimeStep { get; set; }
 		public double TxInterest { get; set; }
 	}

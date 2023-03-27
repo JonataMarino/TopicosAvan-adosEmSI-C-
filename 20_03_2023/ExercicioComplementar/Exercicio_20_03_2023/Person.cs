@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercicio_20_03_2023
 {
-	internal abstract class Person
+	public abstract class Person
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
