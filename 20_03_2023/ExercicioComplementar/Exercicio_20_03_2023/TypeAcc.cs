@@ -14,9 +14,9 @@ namespace Exercicio_20_03_2023
 
 		public override string ToString()
 		{
-			return "ID do beneficio: " + id +
-				"Nivel do Benefício: " + descricao +
-				"Tipo de beneficios: " + BonusTypeAcc;
+			return "\nID do beneficio: " + id +
+				"\nNivel do Benefício: " + descricao +
+				"\nTipo de beneficios: " + BonusTypeAcc;
 		}
 	}
 }

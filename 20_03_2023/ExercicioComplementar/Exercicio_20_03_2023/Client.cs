@@ -14,7 +14,7 @@ namespace Exercicio_20_03_2023
 
 		public override string ToString()
 		{
-			return "Tipo de Conta: " + this.FollowUp.Description + base.ToString();
+			return "Tipo de Conta: " + FollowUp + base.ToString();
 		}
 	}
 }

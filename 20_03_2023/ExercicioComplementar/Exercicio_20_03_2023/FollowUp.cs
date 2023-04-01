@@ -11,5 +11,10 @@ namespace Exercicio_20_03_2023
 		public int IdFollowUp { get; set; }
 		public string Description { get; set; }
 
+		public override string ToString()
+		{
+			return ("$\n Descrição de seguimento: ");
+		}
+
 	}
 }

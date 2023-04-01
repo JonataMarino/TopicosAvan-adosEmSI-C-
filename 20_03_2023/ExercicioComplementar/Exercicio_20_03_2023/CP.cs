@@ -11,5 +11,12 @@ namespace Exercicio_20_03_2023
 		public decimal saldo { get; set; }
 		public int TimeStep { get; set; }
 		public double TxInterest { get; set; }
+
+		public override string ToString()
+		{
+			return base.ToString() + ($"\nSaldo da conta: {saldo}\n" +
+				$"Criada em: {TimeStep}\n" +
+				$"Taxa de Juros: {TxInterest}");
+		}
 	}
 }

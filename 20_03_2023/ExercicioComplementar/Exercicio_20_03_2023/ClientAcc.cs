@@ -12,5 +12,11 @@ namespace Exercicio_20_03_2023
 		public CC CC { get; set; }
 		public CP CP { get; set; }
 		public DateTime DateCreate { get; set; }
+
+		public override string ToString()
+		{
+			return $"Client: {Client}\nCC: {CC}\nCP: {CP}\nDate Create: {DateCreate}";
+		}
 	}
+
 }
