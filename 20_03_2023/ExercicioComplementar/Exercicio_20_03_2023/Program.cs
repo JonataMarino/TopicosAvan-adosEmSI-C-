@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Collections.Generic;
 using Exercicio_20_03_2023;
 
 class Program
@@ -64,27 +63,12 @@ class Program
 			},
 			DateCreate = DateTime.Now,
 		};
-		//List<ClientAcc> lstclient = new List<ClientAcc>();
-		//lstclient.Add(clientAcc);
+		List<ClientAcc> lstclient = new List<ClientAcc>();
+		lstclient.Add(clientAcc);
 
 
-		Console.WriteLine(clientAcc);
+		lstclient.ForEach(clientAcc => Console.WriteLine(clientAcc));
 
 
 	}
 }
-
-
-
-
-
-/*
-public class ClientAcc
-{
-	public Client Client { get; set; }
-	public CC CC { get; set; }
-	public CP CP { get; set; }
-	public DateTime DateCreate { get; set; }
-}
-}
-*/
