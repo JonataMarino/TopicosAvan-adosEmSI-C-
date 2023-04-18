@@ -22,20 +22,21 @@ namespace FormBancoDotNet.Service
 	public bool Inserir(ClientAcc clientacc)
 	{
 		//Implementar
-		string strInsert = "insert into Agenda (Id, Telefone) values (@Nome, @Telefone)";
+		string strInsert = "insert into clienteAcc (Id, Name, Telephone, Adress) values (@Nome, @Telephone, @Adress)";
 		SqlCommand commandInsert = new SqlCommand(strInsert, conn);
 		StringBuilder sb = new StringBuilder();
-			commandInsert.Parameters.Add(new SqlParameter("@Nome", agenda.Nome));
-		commandInsert.Parameters.Add(new SqlParameter("@Telefone", agenda.Telefone));
+			commandInsert.Parameters.Add(new SqlParameter("@Nome", clientacc.Client.Name));
+			commandInsert.Parameters.Add(new SqlParameter("@Telephone", clientacc.Client.Telephone));
+			commandInsert.Parameters.Add(new SqlParameter("@Adress", clientacc.Client.Adress));
 
-		commandInsert.ExecuteNonQuery();
+			commandInsert.ExecuteNonQuery();
 		conn.Close();
 		return true;
 	}
 
-	public List<Agenda> TodosOsRegistros()
+	public List<ClientAcc> TodosOsClientes()
 	{
-		List<Agenda> agendas = new List<Agenda>();
+		List<ClientAcc> contasclientes = new List<ClientAcc>();
 
 		StringBuilder sb = new StringBuilder();
 		sb.Append("SELECT Id, ");
@@ -48,12 +49,12 @@ namespace FormBancoDotNet.Service
 
 		while (dr.Read())
 		{
-			Agenda agenda = new Agenda();
+			ClientAcc clientacc = new ClientAcc();
 
-			agenda.Id = Convert.ToInt32(dr["Id"]);
-			agenda.Nome = dr["Nome"].ToString();
-			agenda.Telefone = dr["Telefone"].ToString();
-			agendas.Add(agenda);
+			clientacc.Client.Id = Convert.ToInt32(dr["Id"]);
+			clientacc.Client.Name = dr["Name"].ToString();
+			clientacc.Client.Telephone = dr["Telephone"].ToString();
+			contasclientes.Add(clientacc);
 		}
 		return agendas;
 	}
