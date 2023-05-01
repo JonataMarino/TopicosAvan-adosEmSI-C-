@@ -32,12 +32,23 @@
 			txtbNameCliente = new TextBox();
 			txtbTelefone = new TextBox();
 			lblTelefone = new Label();
+			txtBEndereco = new TextBox();
+			lblEndereco = new Label();
+			txtBTipoConta = new TextBox();
+			lblTipoconta = new Label();
+			txtBClasseConta = new TextBox();
+			lblClasseConta = new Label();
+			txtBBeneficio = new TextBox();
+			lblBeneficio = new Label();
+			txtBLimite = new TextBox();
+			lblLimite = new Label();
+			btnSave = new Button();
 			SuspendLayout();
 			// 
 			// lblNameCliente
 			// 
 			lblNameCliente.AutoSize = true;
-			lblNameCliente.Location = new Point(32, 20);
+			lblNameCliente.Location = new Point(32, 59);
 			lblNameCliente.Name = "lblNameCliente";
 			lblNameCliente.Size = new Size(97, 15);
 			lblNameCliente.TabIndex = 0;
@@ -45,14 +56,14 @@
 			// 
 			// txtbNameCliente
 			// 
-			txtbNameCliente.Location = new Point(32, 38);
+			txtbNameCliente.Location = new Point(32, 77);
 			txtbNameCliente.Name = "txtbNameCliente";
 			txtbNameCliente.Size = new Size(197, 23);
 			txtbNameCliente.TabIndex = 1;
 			// 
 			// txtbTelefone
 			// 
-			txtbTelefone.Location = new Point(32, 98);
+			txtbTelefone.Location = new Point(32, 142);
 			txtbTelefone.Name = "txtbTelefone";
 			txtbTelefone.Size = new Size(197, 23);
 			txtbTelefone.TabIndex = 3;
@@ -60,23 +71,124 @@
 			// lblTelefone
 			// 
 			lblTelefone.AutoSize = true;
-			lblTelefone.Location = new Point(32, 80);
+			lblTelefone.Location = new Point(32, 124);
 			lblTelefone.Name = "lblTelefone";
 			lblTelefone.Size = new Size(51, 15);
 			lblTelefone.TabIndex = 2;
 			lblTelefone.Text = "Telefone";
+			// 
+			// txtBEndereco
+			// 
+			txtBEndereco.Location = new Point(32, 202);
+			txtBEndereco.Name = "txtBEndereco";
+			txtBEndereco.Size = new Size(197, 23);
+			txtBEndereco.TabIndex = 5;
+			// 
+			// lblEndereco
+			// 
+			lblEndereco.AutoSize = true;
+			lblEndereco.Location = new Point(32, 184);
+			lblEndereco.Name = "lblEndereco";
+			lblEndereco.Size = new Size(56, 15);
+			lblEndereco.TabIndex = 4;
+			lblEndereco.Text = "Endereço";
+			// 
+			// txtBTipoConta
+			// 
+			txtBTipoConta.Location = new Point(379, 77);
+			txtBTipoConta.Name = "txtBTipoConta";
+			txtBTipoConta.Size = new Size(197, 23);
+			txtBTipoConta.TabIndex = 7;
+			// 
+			// lblTipoconta
+			// 
+			lblTipoconta.AutoSize = true;
+			lblTipoconta.Location = new Point(379, 59);
+			lblTipoconta.Name = "lblTipoconta";
+			lblTipoconta.Size = new Size(81, 15);
+			lblTipoconta.TabIndex = 6;
+			lblTipoconta.Text = "Tipo de Conta";
+			// 
+			// txtBClasseConta
+			// 
+			txtBClasseConta.Location = new Point(379, 142);
+			txtBClasseConta.Name = "txtBClasseConta";
+			txtBClasseConta.Size = new Size(197, 23);
+			txtBClasseConta.TabIndex = 9;
+			// 
+			// lblClasseConta
+			// 
+			lblClasseConta.AutoSize = true;
+			lblClasseConta.Location = new Point(379, 124);
+			lblClasseConta.Name = "lblClasseConta";
+			lblClasseConta.Size = new Size(91, 15);
+			lblClasseConta.TabIndex = 8;
+			lblClasseConta.Text = "Classe da Conta";
+			// 
+			// txtBBeneficio
+			// 
+			txtBBeneficio.Location = new Point(379, 202);
+			txtBBeneficio.Name = "txtBBeneficio";
+			txtBBeneficio.Size = new Size(197, 23);
+			txtBBeneficio.TabIndex = 11;
+			// 
+			// lblBeneficio
+			// 
+			lblBeneficio.AutoSize = true;
+			lblBeneficio.Location = new Point(379, 184);
+			lblBeneficio.Name = "lblBeneficio";
+			lblBeneficio.Size = new Size(107, 15);
+			lblBeneficio.TabIndex = 10;
+			lblBeneficio.Text = "Beneficio da Conta";
+			// 
+			// txtBLimite
+			// 
+			txtBLimite.Location = new Point(379, 253);
+			txtBLimite.Name = "txtBLimite";
+			txtBLimite.Size = new Size(197, 23);
+			txtBLimite.TabIndex = 13;
+			// 
+			// lblLimite
+			// 
+			lblLimite.AutoSize = true;
+			lblLimite.Location = new Point(379, 235);
+			lblLimite.Name = "lblLimite";
+			lblLimite.Size = new Size(97, 15);
+			lblLimite.TabIndex = 12;
+			lblLimite.Text = "Limite disponível";
+			// 
+			// btnSave
+			// 
+			btnSave.Location = new Point(111, 287);
+			btnSave.Name = "btnSave";
+			btnSave.Size = new Size(118, 39);
+			btnSave.TabIndex = 14;
+			btnSave.Text = "SALVAR";
+			btnSave.UseVisualStyleBackColor = true;
+			btnSave.Click += btnSave_Click;
 			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 450);
+			Controls.Add(btnSave);
+			Controls.Add(txtBLimite);
+			Controls.Add(lblLimite);
+			Controls.Add(txtBBeneficio);
+			Controls.Add(lblBeneficio);
+			Controls.Add(txtBClasseConta);
+			Controls.Add(lblClasseConta);
+			Controls.Add(txtBTipoConta);
+			Controls.Add(lblTipoconta);
+			Controls.Add(txtBEndereco);
+			Controls.Add(lblEndereco);
 			Controls.Add(txtbTelefone);
 			Controls.Add(lblTelefone);
 			Controls.Add(txtbNameCliente);
 			Controls.Add(lblNameCliente);
 			Name = "Form1";
-			Text = "Form1";
+			Text = "x";
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -87,5 +199,16 @@
 		private TextBox txtbNameCliente;
 		private TextBox txtbTelefone;
 		private Label lblTelefone;
+		private TextBox txtBEndereco;
+		private Label lblEndereco;
+		private TextBox txtBTipoConta;
+		private Label lblTipoconta;
+		private TextBox txtBClasseConta;
+		private Label lblClasseConta;
+		private TextBox txtBBeneficio;
+		private Label lblBeneficio;
+		private TextBox txtBLimite;
+		private Label lblLimite;
+		private Button btnSave;
 	}
 }
