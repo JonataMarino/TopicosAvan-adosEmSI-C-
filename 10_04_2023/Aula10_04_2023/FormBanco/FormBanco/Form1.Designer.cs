@@ -43,12 +43,14 @@
 			txtBLimite = new TextBox();
 			lblLimite = new Label();
 			btnSave = new Button();
+			dataGridView1 = new DataGridView();
+			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			SuspendLayout();
 			// 
 			// lblNameCliente
 			// 
 			lblNameCliente.AutoSize = true;
-			lblNameCliente.Location = new Point(32, 59);
+			lblNameCliente.Location = new Point(12, 21);
 			lblNameCliente.Name = "lblNameCliente";
 			lblNameCliente.Size = new Size(97, 15);
 			lblNameCliente.TabIndex = 0;
@@ -56,14 +58,14 @@
 			// 
 			// txtbNameCliente
 			// 
-			txtbNameCliente.Location = new Point(32, 77);
+			txtbNameCliente.Location = new Point(12, 39);
 			txtbNameCliente.Name = "txtbNameCliente";
 			txtbNameCliente.Size = new Size(197, 23);
 			txtbNameCliente.TabIndex = 1;
 			// 
 			// txtbTelefone
 			// 
-			txtbTelefone.Location = new Point(32, 142);
+			txtbTelefone.Location = new Point(12, 91);
 			txtbTelefone.Name = "txtbTelefone";
 			txtbTelefone.Size = new Size(197, 23);
 			txtbTelefone.TabIndex = 3;
@@ -71,7 +73,7 @@
 			// lblTelefone
 			// 
 			lblTelefone.AutoSize = true;
-			lblTelefone.Location = new Point(32, 124);
+			lblTelefone.Location = new Point(12, 73);
 			lblTelefone.Name = "lblTelefone";
 			lblTelefone.Size = new Size(51, 15);
 			lblTelefone.TabIndex = 2;
@@ -79,7 +81,7 @@
 			// 
 			// txtBEndereco
 			// 
-			txtBEndereco.Location = new Point(32, 202);
+			txtBEndereco.Location = new Point(12, 151);
 			txtBEndereco.Name = "txtBEndereco";
 			txtBEndereco.Size = new Size(197, 23);
 			txtBEndereco.TabIndex = 5;
@@ -87,7 +89,7 @@
 			// lblEndereco
 			// 
 			lblEndereco.AutoSize = true;
-			lblEndereco.Location = new Point(32, 184);
+			lblEndereco.Location = new Point(12, 133);
 			lblEndereco.Name = "lblEndereco";
 			lblEndereco.Size = new Size(56, 15);
 			lblEndereco.TabIndex = 4;
@@ -95,7 +97,7 @@
 			// 
 			// txtBTipoConta
 			// 
-			txtBTipoConta.Location = new Point(379, 77);
+			txtBTipoConta.Location = new Point(231, 39);
 			txtBTipoConta.Name = "txtBTipoConta";
 			txtBTipoConta.Size = new Size(197, 23);
 			txtBTipoConta.TabIndex = 7;
@@ -103,7 +105,7 @@
 			// lblTipoconta
 			// 
 			lblTipoconta.AutoSize = true;
-			lblTipoconta.Location = new Point(379, 59);
+			lblTipoconta.Location = new Point(231, 21);
 			lblTipoconta.Name = "lblTipoconta";
 			lblTipoconta.Size = new Size(81, 15);
 			lblTipoconta.TabIndex = 6;
@@ -111,7 +113,7 @@
 			// 
 			// txtBClasseConta
 			// 
-			txtBClasseConta.Location = new Point(379, 142);
+			txtBClasseConta.Location = new Point(231, 104);
 			txtBClasseConta.Name = "txtBClasseConta";
 			txtBClasseConta.Size = new Size(197, 23);
 			txtBClasseConta.TabIndex = 9;
@@ -119,7 +121,7 @@
 			// lblClasseConta
 			// 
 			lblClasseConta.AutoSize = true;
-			lblClasseConta.Location = new Point(379, 124);
+			lblClasseConta.Location = new Point(231, 86);
 			lblClasseConta.Name = "lblClasseConta";
 			lblClasseConta.Size = new Size(91, 15);
 			lblClasseConta.TabIndex = 8;
@@ -127,7 +129,7 @@
 			// 
 			// txtBBeneficio
 			// 
-			txtBBeneficio.Location = new Point(379, 202);
+			txtBBeneficio.Location = new Point(231, 164);
 			txtBBeneficio.Name = "txtBBeneficio";
 			txtBBeneficio.Size = new Size(197, 23);
 			txtBBeneficio.TabIndex = 11;
@@ -135,7 +137,7 @@
 			// lblBeneficio
 			// 
 			lblBeneficio.AutoSize = true;
-			lblBeneficio.Location = new Point(379, 184);
+			lblBeneficio.Location = new Point(231, 146);
 			lblBeneficio.Name = "lblBeneficio";
 			lblBeneficio.Size = new Size(107, 15);
 			lblBeneficio.TabIndex = 10;
@@ -143,7 +145,7 @@
 			// 
 			// txtBLimite
 			// 
-			txtBLimite.Location = new Point(379, 253);
+			txtBLimite.Location = new Point(231, 215);
 			txtBLimite.Name = "txtBLimite";
 			txtBLimite.Size = new Size(197, 23);
 			txtBLimite.TabIndex = 13;
@@ -151,7 +153,7 @@
 			// lblLimite
 			// 
 			lblLimite.AutoSize = true;
-			lblLimite.Location = new Point(379, 235);
+			lblLimite.Location = new Point(231, 197);
 			lblLimite.Name = "lblLimite";
 			lblLimite.Size = new Size(97, 15);
 			lblLimite.TabIndex = 12;
@@ -159,7 +161,7 @@
 			// 
 			// btnSave
 			// 
-			btnSave.Location = new Point(111, 287);
+			btnSave.Location = new Point(39, 295);
 			btnSave.Name = "btnSave";
 			btnSave.Size = new Size(118, 39);
 			btnSave.TabIndex = 14;
@@ -167,11 +169,21 @@
 			btnSave.UseVisualStyleBackColor = true;
 			btnSave.Click += btnSave_Click;
 			// 
+			// dataGridView1
+			// 
+			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView1.Location = new Point(497, 39);
+			dataGridView1.Name = "dataGridView1";
+			dataGridView1.RowTemplate.Height = 25;
+			dataGridView1.Size = new Size(240, 295);
+			dataGridView1.TabIndex = 15;
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(800, 450);
+			ClientSize = new Size(800, 372);
+			Controls.Add(dataGridView1);
 			Controls.Add(btnSave);
 			Controls.Add(txtBLimite);
 			Controls.Add(lblLimite);
@@ -189,6 +201,7 @@
 			Controls.Add(lblNameCliente);
 			Name = "Form1";
 			Text = "x";
+			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -210,5 +223,6 @@
 		private TextBox txtBLimite;
 		private Label lblLimite;
 		private Button btnSave;
+		private DataGridView dataGridView1;
 	}
 }

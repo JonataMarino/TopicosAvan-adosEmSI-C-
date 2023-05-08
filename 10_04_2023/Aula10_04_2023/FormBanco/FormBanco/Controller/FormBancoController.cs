@@ -12,12 +12,13 @@ namespace FormBanco.Controller
 	{
 		public bool Inserir(NovaConta novaconta)
 		{
-			return new BancoFormService().Inserir(novaconta);
+			return new BancoFormService().InserirCliente(novaconta);
 		}
 
 		public List<NovaConta> TodosOsRegistros()
 		{
 			return new BancoFormService().TodosOsRegistros();
+
 		}
 	}
 }
