@@ -14,7 +14,18 @@ namespace FormBanco.Controller
 		{
 			return new BancoFormService().InserirCliente(novaconta);
 		}
-
+		public bool Atualizar(NovaConta novaconta)
+		{
+			return new BancoFormService().Atualizar(novaconta);
+		}
+		public bool Deletar(int id)
+		{
+			return new BancoFormService().Deletar(id);
+		}
+		public NovaConta ConsultarPorId(int id)
+		{
+			return new BancoFormService().ConsultarPorId(id);
+		}
 		public List<NovaConta> TodosOsRegistros()
 		{
 			return new BancoFormService().TodosOsRegistros();

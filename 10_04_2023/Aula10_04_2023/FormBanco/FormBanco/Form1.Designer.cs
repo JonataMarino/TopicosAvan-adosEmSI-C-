@@ -44,6 +44,10 @@
 			lblLimite = new Label();
 			btnSave = new Button();
 			dgvNovaConta = new DataGridView();
+			btn_Novo = new Button();
+			btn_Excluir = new Button();
+			lblIdConta = new Label();
+			lblIdCliente = new Label();
 			((System.ComponentModel.ISupportInitialize)dgvNovaConta).BeginInit();
 			SuspendLayout();
 			// 
@@ -161,7 +165,7 @@
 			// 
 			// btnSave
 			// 
-			btnSave.Location = new Point(39, 295);
+			btnSave.Location = new Point(128, 295);
 			btnSave.Name = "btnSave";
 			btnSave.Size = new Size(118, 39);
 			btnSave.TabIndex = 14;
@@ -178,11 +182,53 @@
 			dgvNovaConta.Size = new Size(240, 295);
 			dgvNovaConta.TabIndex = 15;
 			// 
+			// btn_Novo
+			// 
+			btn_Novo.Location = new Point(3, 295);
+			btn_Novo.Name = "btn_Novo";
+			btn_Novo.Size = new Size(119, 39);
+			btn_Novo.TabIndex = 16;
+			btn_Novo.Text = "Novo";
+			btn_Novo.UseVisualStyleBackColor = true;
+			btn_Novo.Click += btn_Novo_Click;
+			// 
+			// btn_Excluir
+			// 
+			btn_Excluir.Location = new Point(269, 295);
+			btn_Excluir.Name = "btn_Excluir";
+			btn_Excluir.Size = new Size(107, 39);
+			btn_Excluir.TabIndex = 21;
+			btn_Excluir.Text = "Excluir";
+			btn_Excluir.UseVisualStyleBackColor = true;
+			// 
+			// lblIdConta
+			// 
+			lblIdConta.AutoSize = true;
+			lblIdConta.Location = new Point(640, 11);
+			lblIdConta.Name = "lblIdConta";
+			lblIdConta.Size = new Size(47, 15);
+			lblIdConta.TabIndex = 19;
+			lblIdConta.Text = "Conta()";
+			// 
+			// lblIdCliente
+			// 
+			lblIdCliente.AutoSize = true;
+			lblIdCliente.Location = new Point(510, 11);
+			lblIdCliente.Name = "lblIdCliente";
+			lblIdCliente.Size = new Size(55, 15);
+			lblIdCliente.TabIndex = 18;
+			lblIdCliente.Text = "Cliente ()";
+			lblIdCliente.UseMnemonic = false;
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 372);
+			Controls.Add(btn_Excluir);
+			Controls.Add(lblIdConta);
+			Controls.Add(lblIdCliente);
+			Controls.Add(btn_Novo);
 			Controls.Add(dgvNovaConta);
 			Controls.Add(btnSave);
 			Controls.Add(txtBLimite);
@@ -224,5 +270,9 @@
 		private Label lblLimite;
 		private Button btnSave;
 		private DataGridView dgvNovaConta;
+		private Button btn_Novo;
+		private Button btn_Excluir;
+		private Label lblIdConta;
+		private Label lblIdCliente;
 	}
 }
