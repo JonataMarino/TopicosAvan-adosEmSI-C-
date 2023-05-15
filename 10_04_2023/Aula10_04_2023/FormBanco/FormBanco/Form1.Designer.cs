@@ -43,8 +43,8 @@
 			txtBLimite = new TextBox();
 			lblLimite = new Label();
 			btnSave = new Button();
-			dataGridView1 = new DataGridView();
-			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+			dgvNovaConta = new DataGridView();
+			((System.ComponentModel.ISupportInitialize)dgvNovaConta).BeginInit();
 			SuspendLayout();
 			// 
 			// lblNameCliente
@@ -169,21 +169,21 @@
 			btnSave.UseVisualStyleBackColor = true;
 			btnSave.Click += btnSave_Click;
 			// 
-			// dataGridView1
+			// dgvNovaConta
 			// 
-			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridView1.Location = new Point(497, 39);
-			dataGridView1.Name = "dataGridView1";
-			dataGridView1.RowTemplate.Height = 25;
-			dataGridView1.Size = new Size(240, 295);
-			dataGridView1.TabIndex = 15;
+			dgvNovaConta.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dgvNovaConta.Location = new Point(497, 39);
+			dgvNovaConta.Name = "dgvNovaConta";
+			dgvNovaConta.RowTemplate.Height = 25;
+			dgvNovaConta.Size = new Size(240, 295);
+			dgvNovaConta.TabIndex = 15;
 			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 372);
-			Controls.Add(dataGridView1);
+			Controls.Add(dgvNovaConta);
 			Controls.Add(btnSave);
 			Controls.Add(txtBLimite);
 			Controls.Add(lblLimite);
@@ -201,7 +201,7 @@
 			Controls.Add(lblNameCliente);
 			Name = "Form1";
 			Text = "x";
-			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+			((System.ComponentModel.ISupportInitialize)dgvNovaConta).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -223,6 +223,6 @@
 		private TextBox txtBLimite;
 		private Label lblLimite;
 		private Button btnSave;
-		private DataGridView dataGridView1;
+		private DataGridView dgvNovaConta;
 	}
 }

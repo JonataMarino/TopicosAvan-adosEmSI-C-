@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FormBanco.Model;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace FormBanco.Service
 {
 	class BancoFormService
 	{
-		string strCon = @"Server=(localdb)\MSSQLLocalDB;Integrated Security = true; AttachDbFileName=D:\Logatti-7termo\TopicosAvancadosemSI\10_04_2023\bancodb.mdf;";
+		string strCon = @"Server=(localdb)\MSSQLLocalDB;Integrated Security = true; AttachDbFileName=D:\Logaatti-7termo\TopicosAvancadosEmSI\10_04_2023\Aula10_04_2023\Banco\bancodb.mdf;";
 		SqlConnection conn;
 
 		public BancoFormService()
@@ -25,29 +26,27 @@ namespace FormBanco.Service
 			string strInsertCliente;
 			
 			strInsertCliente = "insert into tbl_cliente" +
-				"(idcliente, nomecliente, telefoneCliente, enderecoCliente, dataCriado)" +
+				"(nomecliente, telefoneCliente, enderecoCliente, dataCriado)" +
 			"values" +
-			"(@idcliente, @nomeCliente, @telefoneCliente, @enderecoCliente, @dataCriado)";
+			"(@nomeCliente, @telefoneCliente, @enderecoCliente, @dataCriado)";
 			SqlCommand commandInsertCliente = new SqlCommand(strInsertCliente, conn);
 
-			commandInsertCliente.Parameters.Add(new SqlParameter("@idcliente", novaconta.cliente.idCliente));
-			commandInsertCliente.Parameters.Add(new SqlParameter("@nomeCliente", novaconta.cliente.nome));
-			commandInsertCliente.Parameters.Add(new SqlParameter("@telefoneCliente", novaconta.cliente.telefone));
-			commandInsertCliente.Parameters.Add(new SqlParameter("@enderecoCliente", novaconta.cliente.endereco));
-			commandInsertCliente.Parameters.Add(new SqlParameter("@dataCriado", novaconta.cliente.dataCriado));
+			commandInsertCliente.Parameters.Add(new SqlParameter("@nomeCliente", novaconta.Cliente.nome));
+			commandInsertCliente.Parameters.Add(new SqlParameter("@telefoneCliente", novaconta.Cliente.telefone));
+			commandInsertCliente.Parameters.Add(new SqlParameter("@enderecoCliente", novaconta.Cliente.endereco));
+			commandInsertCliente.Parameters.Add(new SqlParameter("@dataCriado", novaconta.Cliente.dataCriado));
 
 			strInsertConta = "insert into tbl_conta" +
-				"(idConta, tipoConta, beneficioConta, classeConta, contaLimite, dataCriada)" +
+				"(tipoConta, beneficioConta, classeConta, contaLimite, dataCriada)" +
 			"values" +
-			"(@idConta, @tipoConta, @beneficioConta, @classeConta, @contaLimite, @dataCriada)";
+			"(@tipoConta, @beneficioConta, @classeConta, @contaLimite, @dataCriada)";
 			SqlCommand commandInsertConta = new SqlCommand(strInsertConta, conn);
 
-			commandInsertConta.Parameters.Add(new SqlParameter("@idcliente", novaconta.conta.idConta));
-			commandInsertConta.Parameters.Add(new SqlParameter("@tipoConta", novaconta.conta.tipoConta));
-			commandInsertConta.Parameters.Add(new SqlParameter("@beneficioConta", novaconta.conta.beneficioConta));
-			commandInsertConta.Parameters.Add(new SqlParameter("@classeConta", novaconta.conta.classeConta));
-			commandInsertConta.Parameters.Add(new SqlParameter("@contaLimite", novaconta.conta.limite));
-			commandInsertConta.Parameters.Add(new SqlParameter("@dataCriada", novaconta.conta.dataCriada));
+			commandInsertConta.Parameters.Add(new SqlParameter("@tipoConta", novaconta.ContaCliente.tipoConta));
+			commandInsertConta.Parameters.Add(new SqlParameter("@beneficioConta", novaconta.ContaCliente.beneficioConta));
+			commandInsertConta.Parameters.Add(new SqlParameter("@classeConta", novaconta.ContaCliente.classeConta));
+			commandInsertConta.Parameters.Add(new SqlParameter("@contaLimite", novaconta.ContaCliente.limite));
+			commandInsertConta.Parameters.Add(new SqlParameter("@dataCriada", novaconta.ContaCliente.dataCriada));
 
 
 
@@ -61,32 +60,20 @@ namespace FormBanco.Service
 			List<NovaConta> novascontas = new List<NovaConta>();
 
 			StringBuilder sb = new StringBuilder();
-			sb.Append("select * from tbl_client ");
-			sb.Append("idcliente, nomeCliente, telefoneCliente, enderecoCliente, dataCriado");
-			sb.Append("limiteConta, dataCriada FROM tbl_cliente ");
-			sb.Append("select * from tbl_conta");
 
-			//sb.Append("Id, ");......
-
-			/*
- Pessoa
-public string nome { get; set; }
-public string telefone { get; set;}
-public string endereco { get; set; }
-
- Cliente
-public int idcliente { get; set; }
-public DateTime dataCriado { get; set; }
- 	/*
-		Conta
-		public string tipoConta { get; set; }
-        public string beneficioConta { get; set; }
-        public string classeconta { get; set; }
-		//
-		public int idconta { get; set; }
-		public int numeroConta { get; set; }
-		public decimal limite { get; set; }
-		public DateTime dataCriada { get; set; }*/
+			sb.Append(" SELECT cliente.idcliente, ");
+			sb.Append(" 	   cliente.nomeCliente,  ");
+			sb.Append(" 	   cliente.telefoneCliente, ");
+			sb.Append(" 	   cliente.enderecoCliente,");
+			sb.Append(" 	   cliente.dataCriado, ");
+			sb.Append(" 	   conta.idConta,");
+			sb.Append(" 	   conta.tipoConta, ");
+			sb.Append(" 	   conta.beneficioConta, ");
+			sb.Append(" 	   conta.classeConta, ");
+			sb.Append(" 	   conta.contaLimite, ");
+			sb.Append(" 	   conta.dataCriada ");
+			sb.Append(" FROM tbl_cliente cliente left join TBL_CONTA conta ");
+			sb.Append("   on cliente.idcliente = conta.idcliente ");
 
 
 			SqlCommand commandSelect = new SqlCommand(sb.ToString(), conn);
@@ -96,10 +83,20 @@ public DateTime dataCriado { get; set; }
 			{
 				NovaConta novaconta = new NovaConta();
 
+				novaconta.Cliente = new Cliente()
+				{
+					idCliente = Convert.ToInt32(dr["idcliente"]),
+					nome = (string)dr["nomeCliente"],
+					telefone = (string)dr["telefoneCliente"],
+					endereco = (string)dr["enderecoCliente"],
+					dataCriado = DateTime.Parse((string)dr["dataCriado"])
+				};
+				novaconta.ContaCliente = new ContaCliente()
+				{
+					beneficioConta = (string)dr["beneficioConta"],
 
-				novaconta.conta.idConta = Convert.ToInt32(dr["Id"]);
-				//outros atributos
-
+					//terminar
+				};
 				novascontas.Add(novaconta);
 			}
 			return novascontas;
