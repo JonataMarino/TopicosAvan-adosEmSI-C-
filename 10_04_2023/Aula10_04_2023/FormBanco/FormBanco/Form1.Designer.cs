@@ -46,8 +46,8 @@
 			dgvNovaConta = new DataGridView();
 			btn_Novo = new Button();
 			btn_Excluir = new Button();
-			lblIdConta = new Label();
 			lblIdCliente = new Label();
+			lblIdConta = new Label();
 			((System.ComponentModel.ISupportInitialize)dgvNovaConta).BeginInit();
 			SuspendLayout();
 			// 
@@ -201,32 +201,34 @@
 			btn_Excluir.Text = "Excluir";
 			btn_Excluir.UseVisualStyleBackColor = true;
 			// 
-			// lblIdConta
-			// 
-			lblIdConta.AutoSize = true;
-			lblIdConta.Location = new Point(640, 11);
-			lblIdConta.Name = "lblIdConta";
-			lblIdConta.Size = new Size(47, 15);
-			lblIdConta.TabIndex = 19;
-			lblIdConta.Text = "Conta()";
-			// 
 			// lblIdCliente
 			// 
 			lblIdCliente.AutoSize = true;
-			lblIdCliente.Location = new Point(510, 11);
+			lblIdCliente.Location = new Point(12, 3);
 			lblIdCliente.Name = "lblIdCliente";
-			lblIdCliente.Size = new Size(55, 15);
+			lblIdCliente.Size = new Size(13, 15);
 			lblIdCliente.TabIndex = 18;
-			lblIdCliente.Text = "Cliente ()";
+			lblIdCliente.Text = "0";
 			lblIdCliente.UseMnemonic = false;
+			// 
+			// lblIdConta
+			// 
+			lblIdConta.AutoSize = true;
+			lblIdConta.Location = new Point(231, 3);
+			lblIdConta.Name = "lblIdConta";
+			lblIdConta.Size = new Size(13, 15);
+			lblIdConta.TabIndex = 22;
+			lblIdConta.Text = "0";
+			lblIdConta.UseMnemonic = false;
+			lblIdConta.Click += label1_Click;
 			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 372);
-			Controls.Add(btn_Excluir);
 			Controls.Add(lblIdConta);
+			Controls.Add(btn_Excluir);
 			Controls.Add(lblIdCliente);
 			Controls.Add(btn_Novo);
 			Controls.Add(dgvNovaConta);
@@ -272,7 +274,7 @@
 		private DataGridView dgvNovaConta;
 		private Button btn_Novo;
 		private Button btn_Excluir;
-		private Label lblIdConta;
 		private Label lblIdCliente;
+		private Label lblIdConta;
 	}
 }

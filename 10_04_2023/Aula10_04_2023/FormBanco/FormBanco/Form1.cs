@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using FormBanco.Controller;
 using FormBanco.Model;
 
@@ -17,23 +18,37 @@ namespace FormBanco
 
 			NovaConta novaconta = new NovaConta();
 
+			var idCliente = int.Parse(this.lblIdConta.Text);
+			var telefone = txtbTelefone.Text;
+			var nome = txtbNameCliente.Text;
+			var endereco = txtBEndereco.Text;
+			var dataCriado = DateTime.Now;
+
+
 			novaconta.Cliente = new Cliente()
 			{
-				idCliente = int.Parse(this.lblIdCliente.Text),
-				telefone = txtbTelefone.Text,
-				nome = txtbNameCliente.Text,
-				endereco = txtBEndereco.Text,
-				dataCriado = dataAtual
+				idCliente = idCliente,
+				telefone = telefone,
+				nome = nome,
+				endereco = endereco,
+				dataCriado = dataCriado,
 			};
+
+			var idConta = int.Parse(this.lblIdCliente.Text);
+			var beneficioConta = txtBBeneficio.Text;
+			var classeConta = txtBClasseConta.Text;
+			var dataCriada = dataAtual;
+			var limite = Decimal.Parse(txtBLimite.Text);
+			var tipoConta = txtBTipoConta.Text;
 
 			novaconta.ContaCliente = new ContaCliente()
 			{
-				idConta = int.Parse(this.lblIdConta.Text),
-				beneficioConta = txtBBeneficio.Text,
-				classeConta = txtBClasseConta.Text,
-				dataCriada = dataAtual,
-				limite = Decimal.Parse(txtBLimite.Text),
-				tipoConta = txtBTipoConta.Text
+				idConta = idConta,
+				beneficioConta = beneficioConta,
+				classeConta = classeConta,
+				dataCriada = dataCriada,
+				limite = limite,
+				tipoConta = tipoConta
 			};
 
 			if (new FormBancoController().Inserir(novaconta))
@@ -102,7 +117,7 @@ namespace FormBanco
 
 		private void CarregarGrid()
 		{
-			dgvNovaConta.DataSource = new FormBancoController().TodosOsRegistros();
+			dgvNovaConta.DataSource = new ReportData().reportData(new FormBancoController().TodosOsRegistros());
 		}
 		public void FormBanco_Load(object sender, EventArgs e)
 		{
@@ -126,6 +141,9 @@ namespace FormBanco
 				MessageBox.Show("Erro ao atualizar Registro");
 		}
 
+		private void label1_Click(object sender, EventArgs e)
+		{
 
+		}
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FormBanco.Model
 {
-    class ContaCliente : Conta
+    public class ContaCliente : Conta
     {
         public decimal limite { get; set; }
         public DateTime dataCriada { get; set; }

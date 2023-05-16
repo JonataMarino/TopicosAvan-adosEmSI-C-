@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FormBanco.Model
 {
-    class Conta
+    public class Conta
     {
         public int idConta { get; set; }
         public string tipoConta { get; set; }
