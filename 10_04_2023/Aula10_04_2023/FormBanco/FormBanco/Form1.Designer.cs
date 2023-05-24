@@ -200,6 +200,7 @@
 			btn_Excluir.TabIndex = 21;
 			btn_Excluir.Text = "Excluir";
 			btn_Excluir.UseVisualStyleBackColor = true;
+			btn_Excluir.Click += btn_Excluir_Click;
 			// 
 			// lblIdCliente
 			// 

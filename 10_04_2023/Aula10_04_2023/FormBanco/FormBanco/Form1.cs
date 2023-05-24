@@ -145,5 +145,10 @@ namespace FormBanco
 		{
 
 		}
+
+		private void btn_Excluir_Click(object sender, EventArgs e)
+		{
+			//Deletar(id);
+		}
 	}
 }

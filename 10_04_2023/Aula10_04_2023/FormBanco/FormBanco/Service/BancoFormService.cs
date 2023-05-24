@@ -91,7 +91,7 @@ namespace FormBanco.Service
 			return true;
 		}
 
-		public bool Deletar(int id)
+/*		public bool Deletar(int id)
 		{
 			string strDeleteCliente;
 			string strDeleteConta;
@@ -106,7 +106,7 @@ namespace FormBanco.Service
 			return true;
 
 		}
-
+*/
 		public NovaConta ConsultarPorId(int id)
 		{
 			StringBuilder sb = new StringBuilder();
@@ -210,6 +210,17 @@ namespace FormBanco.Service
 			}
 			return novascontas;
 
+		}
+
+		public bool Deletar(int id)
+		{
+			string strInsert = "DELETE FROM TBL_CONTA WHERE idcliente IN (SELECT idcliente FROM tbl_cliente);\r\n\r\nDELETE FROM tbl_cliente;";
+			SqlCommand commandInsert = new SqlCommand(strInsert, conn);
+			commandInsert.Parameters.Add(new SqlParameter("id", id));
+
+			commandInsert.ExecuteNonQuery();
+			conn.Close();
+			return true;
 		}
 	}
 }
