@@ -9,6 +9,7 @@ namespace FormBanco
 		public Form1()
 		{
 			InitializeComponent();
+			CarregarGrid();
 		}
 
 		DateTime dataAtual = DateTime.Now;
@@ -122,6 +123,7 @@ namespace FormBanco
 		public void FormBanco_Load(object sender, EventArgs e)
 		{
 			CarregarGrid();
+
 		}
 
 		private void btn_Novo_Click(object sender, EventArgs e)
@@ -148,7 +150,14 @@ namespace FormBanco
 
 		private void btn_Excluir_Click(object sender, EventArgs e)
 		{
-			//Deletar(id);
+			if (int.TryParse(lblIdCliente.Text, out int idCliente))
+			{
+				Deletar(idCliente);
+			}
+			else
+			{
+				MessageBox.Show("Erro ao obter o ID do cliente.");
+			}
 		}
 	}
 }
