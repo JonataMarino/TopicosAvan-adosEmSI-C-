@@ -8,9 +8,14 @@ namespace Petshop.Model
 {
 	public class Atendimento
 	{
-		int idAtendimento { get; set; }
-		string dataAtendimento { get; set; }
-		string horaAtendimento { get; set; }
+		public int idAtendimento { get; set; }
+		public Dono_Animal donoAnimal { get; set; }
+		public Animal animal { get; set; }
+		public Baia baia { get; set; }
+		public Servico servico { get; set; }
+		public string dataAtendimento { get; set; }
+		public string horaAtendimento { get; set; }
+		public string profResponsável { get; set; }
 		
 	}
 }

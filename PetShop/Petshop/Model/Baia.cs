@@ -8,7 +8,7 @@ namespace Petshop.Model
 {
 	public class Baia
 	{
-		int idBaia { get; set; }
-		string localBaia { get; set; }
+		public int idBaia { get; set; }
+		public string localBaia { get; set; }
 	}
 }

@@ -4,17 +4,33 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Petshop.Model;
+using Petshop.Service;
 
 namespace Petshop.Controller
 {
 	class PetShopController
 	{
-		string strCon = @"Server=(localdb)\MSSQLLocalDB;Integrated Security = true; AttachDbFileName=D:\Logaatti-7termo\TopicosAvancadosEmSI\PetShop\DBPetShop.mdf;";
-		SqlConnection conn;
-		public PetShopController() { 
-			conn = new SqlConnection(strCon);
-			conn.Open();
+		public bool Inserir(Atendimento atendimento)
+		{
+			return new PetShopFormService().InserirCliente(atendimento);
 		}
+		public bool Atualizar(Atendimento atendimento)
+		{
+			return new PetShopFormService().Atualizar(atendimento);
+		}
+		public bool Deletar(int id)
+		{
+			return new PetShopFormService().Deletar(id);
+		}
+		public Atendimento ConsultarPorId(int id)
+		{
+			return new PetShopFormService().ConsultarPorId(id);
+		}
+		public List<Atendimento> TodosOsRegistros()
+		{
+			return new PetShopFormService().TodosOsRegistros();
 
+		}
 	}
 }

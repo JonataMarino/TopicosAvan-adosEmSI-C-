@@ -8,9 +8,10 @@ namespace Petshop.Model
 {
 	public class Animal
 	{
-		int idAnimal { get; set; }
-		string idadeAnimal { get; set; }
-		string porteAnimal { get; set; }
-		string racaAnimal { get; set; }
+		public int idAnimal { get; set; }
+		public string nomeAnimal { get; set; }
+		public string idadeAnimal { get; set; }
+		public string porteAnimal { get; set; }
+		public string racaAnimal { get; set; }
 	}
 }
