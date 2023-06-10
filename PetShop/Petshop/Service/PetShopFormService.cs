@@ -90,7 +90,6 @@ namespace Petshop.Service
 			"@horaAtendimento, @profResponsavel);";
 			SqlCommand commandInsertAtendimento = new SqlCommand(strInsertAtendimento, conn);
 			
-
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idDono", atendimento.donoAnimal.idDono));
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idBaia", atendimento.baia.idBaia));
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idAnimal", atendimento.animal.idAnimal));
@@ -98,7 +97,9 @@ namespace Petshop.Service
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@dataAtendimento", atendimento.dataAtendimento));
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@horaAtendimento", atendimento.horaAtendimento));
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@profResponsavel", atendimento.profResponsável));
+			
 			commandInsertAtendimento.ExecuteNonQuery();
+			
 			conn.Close();
 			return true;
 		}
