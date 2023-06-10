@@ -280,9 +280,9 @@
 			lblIdProp.Font = new Font("Segoe UI", 5F, FontStyle.Regular, GraphicsUnit.Point);
 			lblIdProp.Location = new Point(203, 9);
 			lblIdProp.Name = "lblIdProp";
-			lblIdProp.Size = new Size(11, 10);
+			lblIdProp.Size = new Size(9, 10);
 			lblIdProp.TabIndex = 25;
-			lblIdProp.Text = "id";
+			lblIdProp.Text = "0";
 			// 
 			// lblIdAte
 			// 
@@ -290,9 +290,9 @@
 			lblIdAte.Font = new Font("Segoe UI", 5F, FontStyle.Regular, GraphicsUnit.Point);
 			lblIdAte.Location = new Point(409, 9);
 			lblIdAte.Name = "lblIdAte";
-			lblIdAte.Size = new Size(11, 10);
+			lblIdAte.Size = new Size(9, 10);
 			lblIdAte.TabIndex = 26;
-			lblIdAte.Text = "id";
+			lblIdAte.Text = "0";
 			// 
 			// lblIdServico
 			// 
@@ -300,9 +300,9 @@
 			lblIdServico.Font = new Font("Segoe UI", 5F, FontStyle.Regular, GraphicsUnit.Point);
 			lblIdServico.Location = new Point(409, 223);
 			lblIdServico.Name = "lblIdServico";
-			lblIdServico.Size = new Size(11, 10);
+			lblIdServico.Size = new Size(9, 10);
 			lblIdServico.TabIndex = 27;
-			lblIdServico.Text = "id";
+			lblIdServico.Text = "0";
 			// 
 			// lblIdAnimal
 			// 
@@ -310,9 +310,9 @@
 			lblIdAnimal.Font = new Font("Segoe UI", 5F, FontStyle.Regular, GraphicsUnit.Point);
 			lblIdAnimal.Location = new Point(142, 153);
 			lblIdAnimal.Name = "lblIdAnimal";
-			lblIdAnimal.Size = new Size(11, 10);
+			lblIdAnimal.Size = new Size(9, 10);
 			lblIdAnimal.TabIndex = 28;
-			lblIdAnimal.Text = "id";
+			lblIdAnimal.Text = "0";
 			// 
 			// btnSalvar
 			// 
@@ -367,9 +367,9 @@
 			lblIdBaia.Font = new Font("Segoe UI", 5F, FontStyle.Regular, GraphicsUnit.Point);
 			lblIdBaia.Location = new Point(388, 179);
 			lblIdBaia.Name = "lblIdBaia";
-			lblIdBaia.Size = new Size(11, 10);
+			lblIdBaia.Size = new Size(9, 10);
 			lblIdBaia.TabIndex = 34;
-			lblIdBaia.Text = "id";
+			lblIdBaia.Text = "0";
 			// 
 			// Form1
 			// 

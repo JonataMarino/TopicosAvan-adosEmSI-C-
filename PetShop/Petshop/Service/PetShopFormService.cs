@@ -4,13 +4,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Petshop.Model;
 
 namespace Petshop.Service
 {
-	class PetShopFormService
+	public class PetShopFormService
 	{
-		string strCon = @"Server=(localdb)\MSSQLLocalDB;Integrated Security = true; AttachDbFileName=D:\Logaatti-7termo\TopicosAvancadosEmSI\PetShop\DBPetShop.mdf;";
+		string strCon = @"Server=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Logaatti-7termo\TopicosAvancadosEmSI\PetShop\Banco\DBPetShop.mdf;";
 		SqlConnection conn;
 
 		public PetShopFormService()
@@ -20,7 +21,7 @@ namespace Petshop.Service
 		}
 
 		//resignificar querys SQL
-		public bool InserirCliente(Atendimento atendimento)
+		public bool InserirAtendimento(Atendimento atendimento)
 		{
 			string strInsertAtendimento;
 			string strInsertAnimal;
@@ -28,51 +29,154 @@ namespace Petshop.Service
 			string strInsertDonoAnimal;
 			string strInsertServico;
 
-			//Inserindo um Atendimento
-
-			strInsertAtendimento = "insert into tbl_atendimento" +
-				"(idDono, idBaia, idAnimal, IdServico, dataAtendimento, horaAtendimento" +
-				"profResponsavel)" +
-			"values" +
-			"(@idDono, @idBaia, @idAnimal, @idServico, @dataAtendimento," +
-			"@horaAtendimento, @profResponsavel); select cast(scope_identity() as int) ";
-			SqlCommand commandInsertAtendimento = new SqlCommand(strInsertAtendimento, conn);
-
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idDono", atendimento.donoAnimal.idDono));
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idAnimal", atendimento.animal.idAnimal));
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idServico", atendimento.servico.idServico));
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idBaia", atendimento.baia.idBaia));
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@dataAtendimento", atendimento.dataAtendimento));
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@horaAtendimento", atendimento.horaAtendimento));
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@profResponsavel", atendimento.profResponsável));
-
-
-			int idAtendimento = (int)commandInsertAtendimento.ExecuteScalar();
-			//final Inserir Atendimento
-
-			//inserir Animal
+			//insert animal
 			strInsertAnimal = "insert into tbl_animal" +
-				"(idAnimal, nomeAnimal, idadeAnimal, porteAnimal, racaAnimal)" +
+				"(nomeAnimal, idadeAnimal, porteAnimal, racaAnimal)" +
 			"values" +
-			"(@idAnimal, @nomeAnimal, @idadeAnimal, @porteAnimal, @racaAnimal)";
+			"(@nomeAnimal, @idadeAnimal, @porteAnimal, @racaAnimal)";
 
 			SqlCommand commandInsertAnimal = new SqlCommand(strInsertAnimal, conn);
 
-			commandInsertAnimal.Parameters.Add(new SqlParameter("@idAnimal", atendimento.animal.idAnimal));
 			commandInsertAnimal.Parameters.Add(new SqlParameter("@nomeAnimal", atendimento.animal.nomeAnimal));
 			commandInsertAnimal.Parameters.Add(new SqlParameter("@idadeAnimal", atendimento.animal.idadeAnimal));
 			commandInsertAnimal.Parameters.Add(new SqlParameter("@porteAnimal", atendimento.animal.porteAnimal));
 			commandInsertAnimal.Parameters.Add(new SqlParameter("@racaAnimal", atendimento.animal.racaAnimal));
 			
+			//commandInsertAnimal.ExecuteNonQuery();
+			//final insert Animal
+
+			//insert baia
+			strInsertBaia = "insert into tbl_baia (localBaia) values" +
+				"(@localBaia)";
+			SqlCommand commandInsertBaia = new SqlCommand(strInsertBaia, conn);
+
+			commandInsertBaia.Parameters.Add(new SqlParameter("@localBaia", atendimento.baia.localBaia));
+			
+			//final insert baia
+
+			//insert dono do animal
+			strInsertDonoAnimal = "insert into tbl_donoAnimal (nomeDono, endereco, telefone)" +
+				"values (@nomeDono, @endereco, @telefone)";
+			SqlCommand commandInsertDono = new SqlCommand(strInsertDonoAnimal, conn);
+
+			commandInsertDono.Parameters.Add(new SqlParameter("@nomeDono", atendimento.donoAnimal.nomeDono));
+			commandInsertDono.Parameters.Add(new SqlParameter("@endereco", atendimento.donoAnimal.endereco));
+			commandInsertDono.Parameters.Add(new SqlParameter("@telefone", atendimento.donoAnimal.telefone));
+
+			//final insert dono do animal
+
+			//insert servico
+			strInsertServico = "insert into tbl_servico (descricaoServico) values" +
+				"(@descricaoServico)";
+			SqlCommand commandInsertServico = new SqlCommand(strInsertServico, conn);
+
+			commandInsertServico.Parameters.Add(new SqlParameter("@descricaoServico", atendimento.servico.descricaoServico));
+			
+		
+			//final insert servico
+			
 			commandInsertAnimal.ExecuteNonQuery();
-			// final inserir animal
+			commandInsertBaia.ExecuteNonQuery();
+			commandInsertDono.ExecuteNonQuery();
+			commandInsertServico.ExecuteNonQuery();
 
 
+			//insert um Atendimento
+			strInsertAtendimento = "insert into tbl_atendimento" +
+				"(idDono, idBaia, idAnimal, idServico, dataAtendimento, horaAtendimento, " +
+				"profResponsavel)" +
+			"values" +
+			"(@idDono, @idBaia, @idAnimal, @idServico, @dataAtendimento," +
+			"@horaAtendimento, @profResponsavel);";
+			SqlCommand commandInsertAtendimento = new SqlCommand(strInsertAtendimento, conn);
+			
+
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idDono", atendimento.donoAnimal.idDono));
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idBaia", atendimento.baia.idBaia));
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idAnimal", atendimento.animal.idAnimal));
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idServico", atendimento.servico.idServico));
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@dataAtendimento", atendimento.dataAtendimento));
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@horaAtendimento", atendimento.horaAtendimento));
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@profResponsavel", atendimento.profResponsável));
+			commandInsertAtendimento.ExecuteNonQuery();
 			conn.Close();
 			return true;
 		}
 
-		public bool Atualizar(Atendimento atendimento)
+		public List<Atendimento> TodosOsRegistros()
+		{
+			List<Atendimento> novascontas = new List<Atendimento>();
+
+			StringBuilder sb = new StringBuilder();
+			sb.Append("SELECT atendimento.idAtendimento, " +
+			"atendimento.dataAtendimento, " +
+			"atendimento.horaAtendimento, " +
+			"atendimento.profResponsavel, " +
+			"dono.nomeDono, " +
+			"baia.localBaia, " +
+			"animal.nomeAnimal, " +
+			"servico.descricaoServico ");
+			sb.Append("FROM tbl_atendimento as atendimento ");
+			sb.Append("INNER JOIN tbl_donoAnimal as dono ON atendimento.idDono = dono.idDono ");
+			sb.Append("INNER JOIN tbl_baia as baia ON atendimento.idBaia = baia.idBaia ");
+			sb.Append("INNER JOIN tbl_animal as animal ON atendimento.idAnimal = animal.idAnimal ");
+			sb.Append("INNER JOIN tbl_servico as servico ON atendimento.IdServico = servico.idServico;");
+
+			SqlCommand commandSelect = new SqlCommand(sb.ToString(), conn);
+			SqlDataReader dr = commandSelect.ExecuteReader();
+
+			while (dr.Read())
+			{
+				Atendimento atendimento = new Atendimento()
+				{
+
+					idAtendimento = Convert.ToInt32(dr["idAtendimento"]),
+					dataAtendimento = (string)(dr["dataAtendimento"]),
+					horaAtendimento = (string)(dr["horaAtendimento"]),
+					profResponsável = (string)(dr["profResponsavel"]),
+
+					donoAnimal = new Dono_Animal()
+					{
+
+						idDono = Convert.ToInt32(dr["idDono"]),
+						nomeDono = (string)(dr["nomeDono"]),
+						telefone = (string)(dr["telefone"]),
+						endereco = (string)(dr["enderecoCliente"]),
+					},
+
+					animal = new Animal()
+					{
+						idAnimal = Convert.ToInt32(dr["idAnimal"]),
+						nomeAnimal = (string)(dr["nomeAnimal"]),
+						idadeAnimal = (string)(dr["idadeAnimal"]),
+						porteAnimal = (string)(dr["porteAnimal"]),
+						racaAnimal = (string)(dr["racaAnimal"]),
+					},
+
+					baia = new Baia()
+					{
+						idBaia = Convert.ToInt32(dr["idBaia"]),
+						localBaia = (string)(dr["localBaia"]),
+
+					},
+
+					servico = new Servico()
+					{
+						idServico = Convert.ToInt32(dr["idServico"]),
+						descricaoServico = (string)(dr["descricaoServico"])
+					},
+				};
+
+				novascontas.Add(atendimento);
+			}
+
+			return novascontas;
+		}
+	}
+}
+
+
+			/*public bool Atualizar(Atendimento atendimento)
 		{
 			string strUpdtConta;
 			string strUpdtCliente;
@@ -100,7 +204,7 @@ namespace Petshop.Service
 			return true;
 		}
 
-		/*		public bool Deletar(int id)
+				public bool Deletar(int id)
 				{
 					string strDeleteCliente;
 					string strDeleteConta;
@@ -115,7 +219,6 @@ namespace Petshop.Service
 					return true;
 
 				}
-		*/
 		public Atendimento ConsultarPorId(int id)
 		{
 			StringBuilder sb = new StringBuilder();
@@ -153,63 +256,17 @@ namespace Petshop.Service
 			}
 			return atendimento;
 		}
+		*/
 
-		public List<Atendimento> TodosOsRegistros()
-		{
-			List<Atendimento> novascontas = new List<Atendimento>();
+/*
+public bool Deletar(int id)
+{
+	string strInsert = "DELETE FROM TBL_CONTA WHERE idcliente IN (SELECT idcliente FROM tbl_cliente);\r\n\r\nDELETE FROM tbl_cliente;";
+	SqlCommand commandInsert = new SqlCommand(strInsert, conn);
+	commandInsert.Parameters.Add(new SqlParameter("id", id));
 
-			StringBuilder sb = new StringBuilder();
+	commandInsert.ExecuteNonQuery();
+	conn.Close();
+	return true;
+}*/
 
-			sb.Append(" SELECT cliente.idcliente, ");
-
-
-
-			SqlCommand commandSelect = new SqlCommand(sb.ToString(), conn);
-			SqlDataReader dr = commandSelect.ExecuteReader();
-
-			while (dr.Read())
-			{
-				Atendimento atendimento = new Atendimento();
-
-				atendimento.donoAnimal = new Dono_Animal()
-				{
-					//revalorar atributos
-					idCliente = Convert.ToInt32(dr["idcliente"]),
-					nome = (string)dr["nomeCliente"],
-					telefone = (string)dr["telefoneCliente"],
-					endereco = (string)dr["enderecoCliente"],
-					dataCriado = (DateTime)dr["dataCriado"]
-				};
-
-				var idConta = (int)dr["idConta"];
-				var tipoConta = (string)dr["tipoConta"];
-				var classeConta = (string)dr["classeConta"];
-				var beneficioConta = (string)dr["beneficioConta"];
-				var limite = (decimal)dr["contaLimite"];
-
-				novaconta.ContaCliente = new ContaCliente()
-				{
-					idConta = idConta,
-					tipoConta = tipoConta,
-					classeConta = classeConta,
-					beneficioConta = beneficioConta,
-					limite = limite
-				};
-				novascontas.Add(novaconta);
-			}
-			return novascontas;
-
-		}
-
-		public bool Deletar(int id)
-		{
-			string strInsert = "DELETE FROM TBL_CONTA WHERE idcliente IN (SELECT idcliente FROM tbl_cliente);\r\n\r\nDELETE FROM tbl_cliente;";
-			SqlCommand commandInsert = new SqlCommand(strInsert, conn);
-			commandInsert.Parameters.Add(new SqlParameter("id", id));
-
-			commandInsert.ExecuteNonQuery();
-			conn.Close();
-			return true;
-		}
-	}
-}
