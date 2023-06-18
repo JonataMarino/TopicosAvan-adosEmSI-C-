@@ -63,6 +63,8 @@
 			txtBBaia = new TextBox();
 			lblBaia = new Label();
 			lblIdBaia = new Label();
+			txtbExcluir = new TextBox();
+			lblExcluir = new Label();
 			((System.ComponentModel.ISupportInitialize)DgvPetShop).BeginInit();
 			SuspendLayout();
 			// 
@@ -257,6 +259,7 @@
 			DgvPetShop.RowTemplate.Height = 25;
 			DgvPetShop.Size = new Size(672, 143);
 			DgvPetShop.TabIndex = 22;
+			DgvPetShop.CellContentClick += DgvPetShop_CellContentClick;
 			// 
 			// lblIdadeAn
 			// 
@@ -328,22 +331,24 @@
 			// btnEditar
 			// 
 			btnEditar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			btnEditar.Location = new Point(552, 82);
+			btnEditar.Location = new Point(552, 147);
 			btnEditar.Name = "btnEditar";
 			btnEditar.Size = new Size(111, 42);
 			btnEditar.TabIndex = 30;
 			btnEditar.Text = "Editar";
 			btnEditar.UseVisualStyleBackColor = true;
+			btnEditar.Click += btnEditar_Click;
 			// 
 			// btnExcluir
 			// 
 			btnExcluir.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			btnExcluir.Location = new Point(552, 141);
+			btnExcluir.Location = new Point(552, 200);
 			btnExcluir.Name = "btnExcluir";
 			btnExcluir.Size = new Size(111, 41);
 			btnExcluir.TabIndex = 31;
 			btnExcluir.Text = "Excluir";
 			btnExcluir.UseVisualStyleBackColor = true;
+			btnExcluir.Click += btnExcluir_Click;
 			// 
 			// txtBBaia
 			// 
@@ -371,11 +376,29 @@
 			lblIdBaia.TabIndex = 34;
 			lblIdBaia.Text = "0";
 			// 
+			// txtbExcluir
+			// 
+			txtbExcluir.Location = new Point(552, 118);
+			txtbExcluir.Name = "txtbExcluir";
+			txtbExcluir.Size = new Size(111, 23);
+			txtbExcluir.TabIndex = 35;
+			// 
+			// lblExcluir
+			// 
+			lblExcluir.AutoSize = true;
+			lblExcluir.Location = new Point(560, 100);
+			lblExcluir.Name = "lblExcluir";
+			lblExcluir.Size = new Size(95, 15);
+			lblExcluir.TabIndex = 36;
+			lblExcluir.Text = "Selecione um ID ";
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(696, 488);
+			ClientSize = new Size(690, 499);
+			Controls.Add(lblExcluir);
+			Controls.Add(txtbExcluir);
 			Controls.Add(lblIdBaia);
 			Controls.Add(lblBaia);
 			Controls.Add(txtBBaia);
@@ -412,7 +435,7 @@
 			Controls.Add(txtBEndDono);
 			Controls.Add(txtBNomeProp);
 			Name = "Form1";
-			Text = "Form1";
+			Text = "PetShop";
 			((System.ComponentModel.ISupportInitialize)DgvPetShop).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
@@ -455,5 +478,7 @@
 		private TextBox txtBBaia;
 		private Label lblBaia;
 		private Label lblIdBaia;
+		private TextBox txtbExcluir;
+		private Label lblExcluir;
 	}
 }

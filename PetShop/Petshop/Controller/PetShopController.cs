@@ -15,18 +15,20 @@ namespace Petshop.Controller
 		{
 			return new PetShopFormService().InserirAtendimento(atendimento);
 		}
-		/*	public bool Atualizar(Atendimento atendimento)
-			{
-				return new PetShopFormService().Atualizar(atendimento);
-			}
-			public bool Deletar(int id)
-			{
-				return new PetShopFormService().Deletar(id);
-			}
-			public Atendimento ConsultarPorId(int id)
-			{
-				return new PetShopFormService().ConsultarPorId(id);
-			}*/
+		public List<Atendimento> CarregarAtendimento(Atendimento atendimento)
+		{
+			return new PetShopFormService().CarregarAtendimento(atendimento);
+		}
+		public bool AtualizarAtendimento(Atendimento atendimento)
+		{
+			return new PetShopFormService().AtualizarAtendimento(atendimento);
+		}
+		public bool ExcluirAtendimento(int id)
+		{
+			return new PetShopFormService().ExcluirAtendimento(id);
+		}
+
+		
 		public List<Atendimento> TodosOsRegistros()
 		{
 			return new PetShopFormService().TodosOsRegistros();

@@ -10,5 +10,10 @@ namespace Petshop.Model
 	{
 		public int idBaia { get; set; }
 		public string localBaia { get; set; }
+
+		public override string ToString()
+		{
+			return this.localBaia;
+		}
 	}
 }

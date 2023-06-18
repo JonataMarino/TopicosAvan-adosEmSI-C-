@@ -13,5 +13,10 @@ namespace Petshop.Model
 		public string endereco { get; set; }
 		public string telefone { get; set; }
 
+
+		public override string ToString()
+		{
+			return this.nomeDono;
+		}
 	}
 }

@@ -10,5 +10,10 @@ namespace Petshop.Model
 	{
 		public int idServico {  get; set; }
 		public string descricaoServico { get; set; }
+
+		public override string ToString()
+		{
+			return this.descricaoServico;
+		}
 	}
 }

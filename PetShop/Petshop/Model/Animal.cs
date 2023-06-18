@@ -13,5 +13,10 @@ namespace Petshop.Model
 		public string idadeAnimal { get; set; }
 		public string porteAnimal { get; set; }
 		public string racaAnimal { get; set; }
+
+		public override string ToString()
+		{
+			return this.nomeAnimal;
+		}
 	}
 }
