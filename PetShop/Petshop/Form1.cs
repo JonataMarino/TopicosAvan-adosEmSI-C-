@@ -112,12 +112,13 @@ namespace Petshop
 			DgvPetShop.CellClick += DgvPetShop_CellContentClick;
 		}
 		//
-		
+
 		// Editar
 		private void EditarAtendimento(Atendimento atendimento)
 		{
 			if (new PetShopController().AtualizarAtendimento(atendimento))
 			{
+
 				MessageBox.Show("Atendimento Atualizado");
 			}
 			else
@@ -126,16 +127,41 @@ namespace Petshop
 
 		private void btnEditar_Click(object sender, EventArgs e)
 		{
+
 			int id = int.Parse(txtbExcluir.Text);
+			Atendimento atendimento = new PetShopController().CarregarAtendimento(new Atendimento() { idAtendimento = id });
+
+			txtBNomeProp.Text = atendimento.donoAnimal.nomeDono.ToString();
+			txtBEndDono.Text = atendimento.donoAnimal.endereco;
+			txtBTelProp.Text = atendimento.donoAnimal.telefone;
+
+			txtbNomeAnimal.Text = atendimento.animal.nomeAnimal;
+			txtBRaca.Text = atendimento.animal.racaAnimal;
+			txtBPorte.Text = atendimento.animal.porteAnimal;
+			txtBIdadeAnimal.Text = atendimento.animal.idadeAnimal;
+
+			txtBDataAte.Text = atendimento.dataAtendimento;
+			txtBHoraAte.Text = atendimento.horaAtendimento;
+			txtBProf.Text = atendimento.profResponsável;
+
+			txtBBaia.Text = atendimento.baia.localBaia;
+			txtBServDesc.Text = atendimento.servico.descricaoServico;
+
 			if (id == 0)
 			{
 				MessageBox.Show("Selecione um atendimento");
 				return;
 			}
-			else
-				;// EditarAtendimento(atendimento);
-		}
+			if (id != 0)
+			{
+				new PetShopController().AtualizarAtendimento(atendimento);
 
+				MessageBox.Show("Atendimento selecionado");
+				return;
+			}
+			else
+				MessageBox.Show("Falha ao atualizar atendimento");
+		}
 		//	Excluir
 		private void ExcluirAtendimento(int id)
 		{
@@ -158,6 +184,10 @@ namespace Petshop
 				this.ExcluirAtendimento(id);
 		}
 
+		private void btnConcluir_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 
 

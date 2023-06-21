@@ -153,27 +153,31 @@ namespace Petshop.Service
 			return atendimentos;
 		}
 
-		public List<Atendimento> CarregarAtendimento(Atendimento atendimento)
+		public Atendimento CarregarAtendimento(Atendimento atendimento)
 		{
 			List<Atendimento> atd = new List<Atendimento>();
 			StringBuilder sb = new StringBuilder();
 
-			sb.Append("SELECT atendimento.idAtendimento, atendimento.dataAtendimento" +
-				"atendimento.horaAtendimento, atendimento.profResponsavel;" +
-				" animal.idAnimal, animal.nomeAnimal, animal.idadeAnimal," +
-				"animal.porteAnimal, animal.racaAnimal, baia.idBaia, baia.localBaia," +
-				"dono.idDono, dono.nomeDono, dono.endereco, dono.tefelone," +
-				"servico.idServico, servico.descricaoServico,");
-			sb.Append("FROM tbl_atendimento as atendimento ");
-			sb.Append("INNER JOIN tbl_donoAnimal as dono ON atendimento.idDono = dono.idDono ");
-			sb.Append("INNER JOIN tbl_baia as baia ON atendimento.idBaia = baia.idBaia ");
-			sb.Append("INNER JOIN tbl_animal as animal ON atendimento.idAnimal = animal.idAnimal ");
-			sb.Append("INNER JOIN tbl_servico as servico ON atendimento.IdServico = @idServico;");
-			SqlCommand CommandSelectOne = new SqlCommand(sb.ToString(), conn);
-			SqlDataReader dr = CommandSelectOne.ExecuteReader();
-			while (dr.Read())
+			sb.Append("SELECT atendimento.idAtendimento, atendimento.dataAtendimento, " +
+				"atendimento.horaAtendimento, atendimento.profResponsavel, " +
+				 "animal.idAnimal, animal.nomeAnimal, animal.idadeAnimal, " +
+				"animal.porteAnimal, animal.racaAnimal, baia.idBaia, baia.localBaia, " +
+				"dono.idDono, dono.nomeDono, dono.endereco, dono.telefone, " +
+				"servico.idServico, servico.descricaoServico " +
+			"FROM tbl_atendimento as atendimento " +
+			"JOIN tbl_donoAnimal as dono ON atendimento.idDono = dono.idDono " +
+			"JOIN tbl_baia as baia ON atendimento.idBaia = baia.idBaia " +
+			"JOIN tbl_animal as animal ON atendimento.idAnimal = animal.idAnimal " +
+			"JOIN tbl_servico as servico ON atendimento.idServico = servico.idServico " +
+			"WHERE idAtendimento = @idAtendimento;");
+
+			SqlCommand commandSelectOne = new SqlCommand(sb.ToString(), conn);
+			commandSelectOne.Parameters.Add(new SqlParameter("@idAtendimento", atendimento.idAtendimento));
+			SqlDataReader dr = commandSelectOne.ExecuteReader();
+
+			if (dr.Read())
 			{
-				Atendimento atendimentos = new Atendimento()
+				Atendimento at = new Atendimento()
 				{
 					idAtendimento = Convert.ToInt32(dr["idAtendimento"]),
 					dataAtendimento = (string)(dr["dataAtendimento"]),
@@ -208,9 +212,9 @@ namespace Petshop.Service
 						descricaoServico = (string)(dr["descricaoServico"])
 					},
 				};
-				atd.Add(atendimentos);
+				return at;
 			}
-			return atd;
+			return null;
 		}
 		
 		

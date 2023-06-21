@@ -65,6 +65,7 @@
 			lblIdBaia = new Label();
 			txtbExcluir = new TextBox();
 			lblExcluir = new Label();
+			btnConcluir = new Button();
 			((System.ComponentModel.ISupportInitialize)DgvPetShop).BeginInit();
 			SuspendLayout();
 			// 
@@ -331,9 +332,9 @@
 			// btnEditar
 			// 
 			btnEditar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			btnEditar.Location = new Point(552, 147);
+			btnEditar.Location = new Point(530, 153);
 			btnEditar.Name = "btnEditar";
-			btnEditar.Size = new Size(111, 42);
+			btnEditar.Size = new Size(74, 37);
 			btnEditar.TabIndex = 30;
 			btnEditar.Text = "Editar";
 			btnEditar.UseVisualStyleBackColor = true;
@@ -342,9 +343,9 @@
 			// btnExcluir
 			// 
 			btnExcluir.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			btnExcluir.Location = new Point(552, 200);
+			btnExcluir.Location = new Point(610, 153);
 			btnExcluir.Name = "btnExcluir";
-			btnExcluir.Size = new Size(111, 41);
+			btnExcluir.Size = new Size(68, 37);
 			btnExcluir.TabIndex = 31;
 			btnExcluir.Text = "Excluir";
 			btnExcluir.UseVisualStyleBackColor = true;
@@ -392,11 +393,23 @@
 			lblExcluir.TabIndex = 36;
 			lblExcluir.Text = "Selecione um ID ";
 			// 
+			// btnConcluir
+			// 
+			btnConcluir.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+			btnConcluir.Location = new Point(571, 204);
+			btnConcluir.Name = "btnConcluir";
+			btnConcluir.Size = new Size(74, 29);
+			btnConcluir.TabIndex = 37;
+			btnConcluir.Text = "Concluir";
+			btnConcluir.UseVisualStyleBackColor = true;
+			btnConcluir.Click += btnConcluir_Click;
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(690, 499);
+			Controls.Add(btnConcluir);
 			Controls.Add(lblExcluir);
 			Controls.Add(txtbExcluir);
 			Controls.Add(lblIdBaia);
@@ -480,5 +493,6 @@
 		private Label lblIdBaia;
 		private TextBox txtbExcluir;
 		private Label lblExcluir;
+		private Button btnConcluir;
 	}
 }

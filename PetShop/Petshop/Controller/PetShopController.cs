@@ -15,7 +15,7 @@ namespace Petshop.Controller
 		{
 			return new PetShopFormService().InserirAtendimento(atendimento);
 		}
-		public List<Atendimento> CarregarAtendimento(Atendimento atendimento)
+		public Atendimento CarregarAtendimento(Atendimento atendimento)
 		{
 			return new PetShopFormService().CarregarAtendimento(atendimento);
 		}
