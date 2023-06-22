@@ -87,7 +87,7 @@ namespace Petshop.Service
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@idServico", idServico));
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@dataAtendimento", atendimento.dataAtendimento));
 			commandInsertAtendimento.Parameters.Add(new SqlParameter("@horaAtendimento", atendimento.horaAtendimento));
-			commandInsertAtendimento.Parameters.Add(new SqlParameter("@profResponsavel", atendimento.profResponsável));
+			commandInsertAtendimento.Parameters.Add(new SqlParameter("@profResponsavel", atendimento.profResponsavel));
 
 			commandInsertAtendimento.ExecuteNonQuery();
 
@@ -123,7 +123,7 @@ namespace Petshop.Service
 					idAtendimento = Convert.ToInt32(dr["idAtendimento"]),
 					dataAtendimento = (string)(dr["dataAtendimento"]),
 					horaAtendimento = (string)(dr["horaAtendimento"]),
-					profResponsável = (string)(dr["profResponsavel"]),
+					profResponsavel = (string)(dr["profResponsavel"]),
 
 					donoAnimal = new Dono_Animal()
 					{
@@ -182,7 +182,7 @@ namespace Petshop.Service
 					idAtendimento = Convert.ToInt32(dr["idAtendimento"]),
 					dataAtendimento = (string)(dr["dataAtendimento"]),
 					horaAtendimento = (string)(dr["horaAtendimento"]),
-					profResponsável = (string)(dr["profResponsavel"]),
+					profResponsavel = (string)(dr["profResponsavel"]),
 
 					donoAnimal = new Dono_Animal()
 					{
@@ -218,22 +218,22 @@ namespace Petshop.Service
 		}
 		
 		
-		public bool AtualizarAtendimento(Atendimento atendimento)
+		public Atendimento AtualizarAtendimento(Atendimento atendimento)
 		{
 			string strUpdtAtendimento;
 			string strUpdtAnimal;
 			string strUpdtBaia;
 			string strUpdtDonoAnimal;
 			string strUpdtServico;
-
-			strUpdtAtendimento = "update tbl_atendimento set dataAtendimento = @dataAtendimento," +
+			Atendimento atdm = new Atendimento();
+			strUpdtAtendimento = "update from tbl_atendimento set dataAtendimento = @dataAtendimento," +
 				"horaAtendimento = @horaAtendimento, profResponsavel = @profResponsavel " +
-				"where idAtendimento = @idAtendimento";
+				"where idAtendimento = @idAtendimento ";
 			SqlCommand commandUpdtAtendimento = new SqlCommand(strUpdtAtendimento, conn);
-			commandUpdtAtendimento.Parameters.Add(new SqlParameter("@idAtendimento", atendimento.idAtendimento));
 			commandUpdtAtendimento.Parameters.Add(new SqlParameter("@dataAtendimento", atendimento.dataAtendimento));
 			commandUpdtAtendimento.Parameters.Add(new SqlParameter("@horaAtendimento", atendimento.horaAtendimento));
-			commandUpdtAtendimento.Parameters.Add(new SqlParameter("@profResponsavel", atendimento.profResponsável));
+			commandUpdtAtendimento.Parameters.Add(new SqlParameter("@profResponsavel", atendimento.profResponsavel));
+			commandUpdtAtendimento.Parameters.Add(new SqlParameter("@idAtendimento", atendimento.idAtendimento));
 			commandUpdtAtendimento.ExecuteNonQuery();
 
 			strUpdtDonoAnimal = "update tbl_donoAnimal set nomeDono = @nomeDono, endereco = @endereco, telefone = @telefone where idDono = @idDono";
@@ -253,22 +253,22 @@ namespace Petshop.Service
 			strUpdtAnimal = "update tbl_animal set nomeAnimal = @nomeAnimal, idadeAnimal = @idadeAnimal, porteAnimal = @porteAnimal, racaAnimal = @racaAnimal " +
 				"where idAnimal = @idAnimal";
 			SqlCommand CommandUpdtAnimal = new SqlCommand(strUpdtAnimal, conn);
-			CommandUpdtAnimal.Parameters.Add(new SqlParameter("@idAnimal", atendimento.animal.idAnimal));
+			CommandUpdtAnimal.Parameters.Add(new SqlParameter("@nomeAnimal", atendimento.animal.nomeAnimal));
 			CommandUpdtAnimal.Parameters.Add(new SqlParameter("@idadeAnimal", atendimento.animal.idadeAnimal));
 			CommandUpdtAnimal.Parameters.Add(new SqlParameter("@porteAnimal", atendimento.animal.porteAnimal));
 			CommandUpdtAnimal.Parameters.Add(new SqlParameter("@racaAnimal", atendimento.animal.racaAnimal));
-			CommandUpdtAnimal.Parameters.Add(new SqlParameter("@nomeAnimal", atendimento.animal.nomeAnimal));
+			CommandUpdtAnimal.Parameters.Add(new SqlParameter("@idAnimal", atendimento.animal.idAnimal));
 			CommandUpdtAnimal.ExecuteNonQuery();
 
 
 			strUpdtServico = "update tbl_servico set descricaoservico = @descricaoServico where idServico = @idServico";
 			SqlCommand CommandUpdtServico = new SqlCommand(strUpdtServico, conn);
-			CommandUpdtServico.Parameters.Add(new SqlParameter("@idServico", atendimento.servico.idServico));
 			CommandUpdtServico.Parameters.Add(new SqlParameter("@descricaoServico", atendimento.servico.descricaoServico));
+			CommandUpdtServico.Parameters.Add(new SqlParameter("@idServico", atendimento.servico.idServico));
 			CommandUpdtServico.ExecuteNonQuery();
-
+			
 			conn.Close();
-			return true;
+			return atdm;
 		}
 		public bool ExcluirAtendimento(int id)
 		{

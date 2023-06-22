@@ -22,7 +22,7 @@ namespace Petshop
 				idAtendimento = int.Parse(this.lblIdAte.Text),
 				dataAtendimento = txtBDataAte.Text,
 				horaAtendimento = txtBHoraAte.Text,
-				profResponsável = txtBProf.Text,
+				profResponsavel = txtBProf.Text,
 				donoAnimal = new Dono_Animal()
 				{
 					idDono = int.Parse(this.lblIdProp.Text),
@@ -114,38 +114,12 @@ namespace Petshop
 		//
 
 		// Editar
-		private void EditarAtendimento(Atendimento atendimento)
-		{
-			if (new PetShopController().AtualizarAtendimento(atendimento))
-			{
-
-				MessageBox.Show("Atendimento Atualizado");
-			}
-			else
-				MessageBox.Show("Erro ao atualizar!");
-		}
 
 		private void btnEditar_Click(object sender, EventArgs e)
 		{
 
 			int id = int.Parse(txtbExcluir.Text);
-			Atendimento atendimento = new PetShopController().CarregarAtendimento(new Atendimento() { idAtendimento = id });
 
-			txtBNomeProp.Text = atendimento.donoAnimal.nomeDono.ToString();
-			txtBEndDono.Text = atendimento.donoAnimal.endereco;
-			txtBTelProp.Text = atendimento.donoAnimal.telefone;
-
-			txtbNomeAnimal.Text = atendimento.animal.nomeAnimal;
-			txtBRaca.Text = atendimento.animal.racaAnimal;
-			txtBPorte.Text = atendimento.animal.porteAnimal;
-			txtBIdadeAnimal.Text = atendimento.animal.idadeAnimal;
-
-			txtBDataAte.Text = atendimento.dataAtendimento;
-			txtBHoraAte.Text = atendimento.horaAtendimento;
-			txtBProf.Text = atendimento.profResponsável;
-
-			txtBBaia.Text = atendimento.baia.localBaia;
-			txtBServDesc.Text = atendimento.servico.descricaoServico;
 
 			if (id == 0)
 			{
@@ -154,14 +128,64 @@ namespace Petshop
 			}
 			if (id != 0)
 			{
-				new PetShopController().AtualizarAtendimento(atendimento);
+				Atendimento atendimento = new PetShopController().CarregarAtendimento(new Atendimento() { idAtendimento = id });
 
-				MessageBox.Show("Atendimento selecionado");
+				//proprietário
+				lblIdProp.Text = atendimento.donoAnimal.idDono.ToString();
+				txtBNomeProp.Text = atendimento.donoAnimal.nomeDono.ToString();
+				txtBEndDono.Text = atendimento.donoAnimal.endereco;
+				txtBTelProp.Text = atendimento.donoAnimal.telefone;
+				//animal
+				lblIdAnimal.Text = atendimento.animal.idAnimal.ToString();
+				txtbNomeAnimal.Text = atendimento.animal.nomeAnimal;
+				txtBRaca.Text = atendimento.animal.racaAnimal;
+				txtBPorte.Text = atendimento.animal.porteAnimal;
+				txtBIdadeAnimal.Text = atendimento.animal.idadeAnimal;
+				//atendimento
+				lblIdAte.Text = atendimento.idAtendimento.ToString();
+				txtBDataAte.Text = atendimento.dataAtendimento;
+				txtBHoraAte.Text = atendimento.horaAtendimento;
+				txtBProf.Text = atendimento.profResponsavel;
+				//baia
+				lblIdBaia.Text = atendimento.baia.idBaia.ToString();
+				txtBBaia.Text = atendimento.baia.localBaia;
+				//serviço
+				lblIdServico.Text = atendimento.servico.idServico.ToString();
+				txtBServDesc.Text = atendimento.servico.descricaoServico;
+
+				MessageBox.Show("Atendimento Selecionado");
 				return;
 			}
-			else
-				MessageBox.Show("Falha ao atualizar atendimento");
 		}
+
+			private void btnConcluir_Click(object sender, EventArgs e)
+			{
+				int id = int.Parse(lblIdAte.Text);
+				Atendimento atendimento = new PetShopController().AtualizarAtendimento(new Atendimento() {idAtendimento = id});
+				atendimento.idAtendimento = int.Parse(lblIdAte.Text);
+				atendimento.dataAtendimento = txtBDataAte.Text;
+				atendimento.horaAtendimento = txtBHoraAte.Text;
+				atendimento.profResponsavel = txtBProf.Text;
+				atendimento.donoAnimal.idDono = int.Parse(lblIdProp.Text);
+				atendimento.donoAnimal.nomeDono = txtBNomeProp.Text;
+				atendimento.donoAnimal.endereco = txtBEndDono.Text;
+				atendimento.donoAnimal.telefone = txtBTelProp.Text;
+				atendimento.animal.idAnimal = int.Parse(lblIdAnimal.Text);
+				atendimento.animal.nomeAnimal = txtbNomeAnimal.Text;
+				atendimento.animal.idadeAnimal = txtBIdadeAnimal.Text;
+				atendimento.animal.porteAnimal = txtBPorte.Text;
+				atendimento.animal.racaAnimal = txtBRaca.Text;
+				atendimento.baia.idBaia = int.Parse(lblIdBaia.Text);
+				atendimento.baia.localBaia = txtBBaia.Text;
+				atendimento.servico.idServico = int.Parse(lblIdServico.Text);
+				atendimento.servico.descricaoServico = txtBServDesc.Text;
+
+				MessageBox.Show("Atendimento Atualizado");
+				return;
+			}
+			
+			
+	
 		//	Excluir
 		private void ExcluirAtendimento(int id)
 		{
@@ -184,10 +208,7 @@ namespace Petshop
 				this.ExcluirAtendimento(id);
 		}
 
-		private void btnConcluir_Click(object sender, EventArgs e)
-		{
 
-		}
 	}
 
 

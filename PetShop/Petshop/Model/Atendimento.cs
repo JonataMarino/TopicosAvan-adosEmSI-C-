@@ -15,7 +15,7 @@ namespace Petshop.Model
 		public Servico servico { get; set; }
 		public string dataAtendimento { get; set; }
 		public string horaAtendimento { get; set; }
-		public string profResponsável { get; set; }
+		public string profResponsavel { get; set; }
 		
 	}
 }

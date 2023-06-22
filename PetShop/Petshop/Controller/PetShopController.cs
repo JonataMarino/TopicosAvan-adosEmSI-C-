@@ -19,7 +19,7 @@ namespace Petshop.Controller
 		{
 			return new PetShopFormService().CarregarAtendimento(atendimento);
 		}
-		public bool AtualizarAtendimento(Atendimento atendimento)
+		public Atendimento AtualizarAtendimento(Atendimento atendimento)
 		{
 			return new PetShopFormService().AtualizarAtendimento(atendimento);
 		}
