@@ -158,34 +158,34 @@ namespace Petshop
 			}
 		}
 
-			private void btnConcluir_Click(object sender, EventArgs e)
-			{
-				int id = int.Parse(lblIdAte.Text);
-				Atendimento atendimento = new PetShopController().AtualizarAtendimento(new Atendimento() {idAtendimento = id});
-				atendimento.idAtendimento = int.Parse(lblIdAte.Text);
-				atendimento.dataAtendimento = txtBDataAte.Text;
-				atendimento.horaAtendimento = txtBHoraAte.Text;
-				atendimento.profResponsavel = txtBProf.Text;
-				atendimento.donoAnimal.idDono = int.Parse(lblIdProp.Text);
-				atendimento.donoAnimal.nomeDono = txtBNomeProp.Text;
-				atendimento.donoAnimal.endereco = txtBEndDono.Text;
-				atendimento.donoAnimal.telefone = txtBTelProp.Text;
-				atendimento.animal.idAnimal = int.Parse(lblIdAnimal.Text);
-				atendimento.animal.nomeAnimal = txtbNomeAnimal.Text;
-				atendimento.animal.idadeAnimal = txtBIdadeAnimal.Text;
-				atendimento.animal.porteAnimal = txtBPorte.Text;
-				atendimento.animal.racaAnimal = txtBRaca.Text;
-				atendimento.baia.idBaia = int.Parse(lblIdBaia.Text);
-				atendimento.baia.localBaia = txtBBaia.Text;
-				atendimento.servico.idServico = int.Parse(lblIdServico.Text);
-				atendimento.servico.descricaoServico = txtBServDesc.Text;
+		private void btnConcluir_Click(object sender, EventArgs e)
+		{
+			int id = int.Parse(lblIdAte.Text);
+			Atendimento atendimento = new PetShopController().AtualizarAtendimento(id);
+			atendimento.idAtendimento = int.Parse(lblIdAte.Text);
+			atendimento.dataAtendimento = txtBDataAte.Text;
+			atendimento.horaAtendimento = txtBHoraAte.Text;
+			atendimento.profResponsavel = txtBProf.Text;
+			atendimento.donoAnimal.idDono = int.Parse(lblIdProp.Text);
+			atendimento.donoAnimal.nomeDono = txtBNomeProp.Text;
+			atendimento.donoAnimal.endereco = txtBEndDono.Text;
+			atendimento.donoAnimal.telefone = txtBTelProp.Text;
+			atendimento.animal.idAnimal = int.Parse(lblIdAnimal.Text);
+			atendimento.animal.nomeAnimal = txtbNomeAnimal.Text;
+			atendimento.animal.idadeAnimal = txtBIdadeAnimal.Text;
+			atendimento.animal.porteAnimal = txtBPorte.Text;
+			atendimento.animal.racaAnimal = txtBRaca.Text;
+			atendimento.baia.idBaia = int.Parse(lblIdBaia.Text);
+			atendimento.baia.localBaia = txtBBaia.Text;
+			atendimento.servico.idServico = int.Parse(lblIdServico.Text);
+			atendimento.servico.descricaoServico = txtBServDesc.Text;
 
-				MessageBox.Show("Atendimento Atualizado");
-				return;
-			}
-			
-			
-	
+			MessageBox.Show("Atendimento Atualizado");
+			return;
+		}
+
+
+
 		//	Excluir
 		private void ExcluirAtendimento(int id)
 		{
@@ -207,12 +207,5 @@ namespace Petshop
 			else
 				this.ExcluirAtendimento(id);
 		}
-
-
 	}
-
-
 }
-
-
-

@@ -19,9 +19,9 @@ namespace Petshop.Controller
 		{
 			return new PetShopFormService().CarregarAtendimento(atendimento);
 		}
-		public Atendimento AtualizarAtendimento(Atendimento atendimento)
+		public Atendimento AtualizarAtendimento(int id)
 		{
-			return new PetShopFormService().AtualizarAtendimento(atendimento);
+			return new PetShopFormService().AtualizarAtendimento(id);
 		}
 		public bool ExcluirAtendimento(int id)
 		{
